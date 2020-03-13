@@ -3,15 +3,15 @@ use rltk::{RGB};
 
 #[derive(Component)]
 pub struct Position {
-    x: i32,
-    y: i32
+    pub x: i32,
+    pub y: i32
 }
 
 #[derive(Component)]
 pub struct Renderable {
-    glyph: u8,
-    fg: RGB,
-    bg: RGB
+    pub glyph: u8,
+    pub fg: RGB,
+    pub bg: RGB
 }
 
 #[derive(Component)]
