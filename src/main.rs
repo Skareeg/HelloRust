@@ -1,4 +1,4 @@
-use rltk::{Console, GameState, Rltk, RGB, VirtualKeyCode};
+use rltk::{Console, GameState, Rltk, VirtualKeyCode, RGB};
 use specs::prelude::*;
 #[macro_use]
 extern crate specs_derive;
@@ -13,7 +13,7 @@ mod rect;
 pub use rect::*;
 
 pub struct State {
-    pub ecs: World
+    pub ecs: World,
 }
 
 impl State {
@@ -49,9 +49,7 @@ fn main() {
         .with_title("Roguelike Tutorial")
         .build();
 
-    let mut gs = State {
-        ecs: World::new()
-    };
+    let mut gs = State { ecs: World::new() };
 
     let (rooms, map) = new_map_rooms_and_corridors();
     gs.ecs.insert(map);
@@ -63,8 +61,15 @@ fn main() {
 
     gs.ecs
         .create_entity()
-        .with(Position { x: player_x, y: player_y })
-        .with(Renderable { glyph: rltk::to_cp437('@'), fg: RGB::named(rltk::YELLOW), bg: RGB::named(rltk::BLACK) })
+        .with(Position {
+            x: player_x,
+            y: player_y,
+        })
+        .with(Renderable {
+            glyph: rltk::to_cp437('@'),
+            fg: RGB::named(rltk::YELLOW),
+            bg: RGB::named(rltk::BLACK),
+        })
         .with(Player {})
         .build();
 
